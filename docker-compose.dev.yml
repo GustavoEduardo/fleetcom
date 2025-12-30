@@ -1,0 +1,43 @@
+services:
+  mongo:
+    image: mongo:7.0
+    container_name: Fleetcom-mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASS}
+      MONGO_INITDB_DATABASE: ${MONGO_DB_NAME}
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db # Liga o volume persistente à pasta onde o Mongo grava o banco.
+
+  Fleetcom-api:
+    build:
+      context: ./Fleetcom-api
+      dockerfile: Dockerfile.dev
+    container_name: Fleetcom-api
+    env_file:
+      - ./Fleetcom-api/.env
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./Fleetcom-api:/app # código atualiza em tempo real!
+      - /app/node_modules # mantém node_modules na sobrescrita (volume anônimo)
+    depends_on:
+      - mongo
+
+  Fleetcom-app:
+    build:
+      context: ./Fleetcom-app
+      dockerfile: Dockerfile.dev
+    container_name: Fleetcom-app
+    ports:
+      - "4200:4200"
+    volumes:
+      - ./Fleetcom-app:/app
+      - /app/node_modules
+    depends_on:
+      - Fleetcom-api
+
+volumes:
+  mongo_data: # Volume nomeado persistente para salvar os dados do MongoDB

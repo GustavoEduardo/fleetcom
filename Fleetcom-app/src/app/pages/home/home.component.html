@@ -1,0 +1,86 @@
+<div>
+  <div class="capa">
+    <button class="bt-logout" (click)="logout()">
+      <mat-icon>logout</mat-icon>
+    </button>
+    <div class="content-info">
+      <div class="img-capa">
+        @if (user) { @if ( user.avatarUrl ) {<img
+          [src]="api + user.avatarUrl"
+          class="avatar"
+        />}@else {
+        <div class="new-avatar">
+          <mat-icon [routerLink]="['/profile']" class="icon"
+            >account_circle</mat-icon
+          >
+        </div>
+        }
+        <div class="user-name">Olá, {{ user.name || "" }}</div>
+        }
+      </div>
+      <div class="tools">
+        <app-search (searchEmit)="onSearchChange($event)"></app-search>
+        <app-button-icon text="Filtrar" (clickEmit)="openFilters(true)">
+          <svg icon width="22" height="22" viewBox="0 0 24 24">
+            <rect x="2" y="3.5" width="22" height="4" rx="2" fill="#C61D35" />
+            <rect x="4" y="12" width="18" height="4" rx="2" fill="#C61D35" />
+            <rect x="6" y="20" width="14" height="4" rx="2" fill="#C61D35" />
+          </svg>
+        </app-button-icon>
+      </div>
+    </div>
+  </div>
+
+  <div class="box-last-reservations">
+    <h3>Ùltimas reservas</h3>
+
+    <ng-template #loadingElement>
+      <app-loading [size]="50"></app-loading>
+    </ng-template>
+
+    @if(noReservations && !loadingCars) {
+    <div class="container-no-reservations">
+      <span> Nenhuma reserva encontrada.</span>
+    </div>
+    } @else {
+    <app-carrossel *ngIf="!loadingCars; else loadingElement">
+      @for (r of reservations; track $index) {
+      <app-card-car
+        [isButton]="r.vehicle.status === 'RESERVED'"
+        (selectCard)="r.vehicle.status === 'RESERVED' ? toReservations() : ''"
+        [car]="r.vehicle"
+      ></app-card-car>
+      }
+    </app-carrossel>
+    }
+  </div>
+
+  <ng-template #titleDrawer>
+    <img
+      src="assets/icons/busca.svg"
+      alt=""
+      aria-hidden="true"
+      class="search-icon"
+    />
+    <span>BUSCA</span>
+  </ng-template>
+
+  <div class="bt-qr">
+    <app-loading-button [disabled]="true">
+      <img src="assets/icons/qr-scanner.svg" class="avatar" alt="Avatar" />
+      Acessar por QR code
+    </app-loading-button>
+  </div>
+
+  <app-drawer
+    [titleTemplate]="titleDrawer"
+    [open]="drawerOpen"
+    (closed)="drawerOpen = false"
+  >
+    <app-filters-vehicles
+      [loading]="loadingCars"
+      (confirmFilter)="getReservatonsLoggedUser($event)"
+      (closeDrawer)="openFilters(false)"
+    ></app-filters-vehicles>
+  </app-drawer>
+</div>

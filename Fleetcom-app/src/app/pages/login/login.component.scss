@@ -1,0 +1,86 @@
+@import "colors";
+
+.login-container {
+  background-color: $color-primary;
+  height: 100dvh;
+  min-height: 100dvh;
+  min-width: 260px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 42px;
+}
+
+.marca-dagua {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 55%;
+  min-width: 200px;
+  max-width: 300px;
+  opacity: 4%;
+  filter: brightness(0) invert(1);
+
+  pointer-events: none;
+}
+
+.box-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .title {
+    display: inline-block;
+    color: #fff;
+    font-size: 24px;
+    font-weight: 500;
+  }
+  .logo {
+    width: 72px;
+  }
+}
+
+.login-form {
+  width: 80%;
+  max-width: 380px;
+  min-width: 240px;
+
+  .form-field {
+    input {
+      border-radius: 32px;
+      border: none;
+      height: 52px;
+      padding: 8px 20px;
+      width: 100%;
+      margin: 8px 0;
+      color: $text-primary;
+      font-size: 16px;
+    }
+  }
+
+  .box-error {
+    margin-left: 12px;
+    display: flex;
+    flex-direction: column;
+    height: 48px;
+  }
+}
+
+.msg-info {
+  font-size: 14px;
+  color: $text-white;
+  margin-top: 22px;
+  text-align: center;
+}
+
+.msg-cadastrar {
+  font-size: 14px;
+  color: $text-white;
+  position: fixed;
+  bottom: 30px;
+}
+
+.bt-link {
+  text-decoration: underline;
+}

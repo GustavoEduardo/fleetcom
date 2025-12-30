@@ -1,0 +1,27 @@
+.carrosel {
+  display: flex;
+  gap: 17px;
+  flex-wrap: wrap;
+  padding-top: 10px;
+}
+
+@media (max-width: 768px) {
+  .carrosel {
+    height: 320px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 10px 20px 20px 10px;
+  }
+
+  .carrosel::-webkit-scrollbar {
+    display: none;
+  }
+
+  .carrosel > * {
+    scroll-snap-align: start;
+  }
+}

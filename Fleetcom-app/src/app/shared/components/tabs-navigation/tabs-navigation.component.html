@@ -1,0 +1,16 @@
+<div class="menu">
+  <nav class="tabs-container">
+    <ul class="tabs-list">
+      <li
+        *ngFor="let link of links"
+        routerLink="{{ link.route }}"
+        routerLinkActive="active"
+        class="tab-item"
+      >
+      <!-- [fontSet]="'material-symbols-outlined'" -->
+        <mat-icon class="icon">{{ link.icon }}</mat-icon>
+        <span>{{ link.label }}</span>
+      </li>
+    </ul>
+  </nav>
+</div>

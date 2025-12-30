@@ -1,0 +1,138 @@
+<div class="header">
+  <h3>{{ reservations.length ? "Reserva atual" : "Nova reserva" }}</h3>
+</div>
+<div *ngIf="noReservations" class="tools">
+  <app-search (searchEmit)="onSearchChange($event)"></app-search>
+  <app-button-icon text="Filtrar" (clickEmit)="openFilters(true)">
+    <svg icon width="22" height="22" viewBox="0 0 24 24">
+      <rect x="2" y="3.5" width="22" height="4" rx="2" fill="#C61D35" />
+      <rect x="4" y="12" width="18" height="4" rx="2" fill="#C61D35" />
+      <rect x="6" y="20" width="14" height="4" rx="2" fill="#C61D35" />
+    </svg>
+  </app-button-icon>
+</div>
+
+@if(reservations.length){
+<div class="box-last-reservation">
+  <div>
+    <app-card-car
+      *ngIf="!loadingCars; else loadingElement"
+      [reservation]="reservations[0]"
+      [car]="reservations[0].vehicle"
+    ></app-card-car>
+
+    <ng-template #loadingElement>
+      <app-loading [size]="50"></app-loading>
+    </ng-template>
+
+    <app-loading-button (click)="cancel()" [bgType]="'secondary'">
+      CANCELAR RESERVA
+    </app-loading-button>
+  </div>
+</div>
+
+} @else {
+
+<div class="container-new-reservation">
+  <div class="select-vehicle">
+    <h4>Selecione um veículo</h4>
+
+    <div
+      [ngStyle]="{ padding: '12px 8px' }"
+      *ngIf="!loadingCars && !vehicles.length"
+    >
+      Nenhum veículo encontrado.
+    </div>
+
+    <app-carrossel *ngIf="!loadingCars; else loadingElement">
+      @for (v of vehicles; track $index) {
+      <app-card-car
+        (selectCard)="selectCar($event)"
+        [isButton]="true"
+        [car]="v"
+      ></app-card-car>
+      }
+    </app-carrossel>
+  </div>
+
+  <div
+    #selectTimeRange
+    id="selectTimeRange"
+    *ngIf="reservationForm.get('vehicleId')?.value"
+  >
+    <h4>Selecione uma data</h4>
+
+    <mat-form-field class="field-range full" appearance="outline">
+      <mat-label>Selecione o período da reserva</mat-label>
+      <mat-date-range-input
+        [formGroup]="reservationForm"
+        [rangePicker]="picker"
+      >
+        <input
+          matStartDate
+          formControlName="reservedFrom"
+          placeholder="Data inicial"
+        />
+        <input
+          matEndDate
+          formControlName="reservedUntil"
+          placeholder="Data de final"
+        />
+      </mat-date-range-input>
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-date-range-picker #picker></mat-date-range-picker>
+
+      @if
+      (reservationForm.controls['reservedFrom'].hasError('matStartDateInvalid'))
+      {
+      <mat-error>Data inicial inválida</mat-error>
+      } @if
+      (reservationForm.controls['reservedUntil'].hasError('matEndDateInvalid'))
+      {
+      <mat-error>Data final inválida</mat-error>
+      }
+
+      <mat-error
+        *ngIf="reservationForm.get('reservedFrom')?.hasError('invalidPastDate')"
+      >
+        A data inicial não pode ser anterior à data atual.
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div *ngIf="reservationForm.valid" class="bt-reservar" id="btReservar">
+    <app-loading-button [loading]="loadingCreate" (click)="reserveVehicle()">
+      Reservar veículo
+    </app-loading-button>
+  </div>
+</div>
+}
+
+<ng-template #loadingElement>
+  <app-loading [size]="50"></app-loading>
+</ng-template>
+
+<ng-template #titleDrawer>
+  <img
+    src="assets/icons/busca.svg"
+    alt=""
+    aria-hidden="true"
+    class="search-icon"
+  />
+  <span>BUSCA</span>
+</ng-template>
+
+<app-drawer
+  [titleTemplate]="titleDrawer"
+  [open]="drawerOpen"
+  (closed)="drawerOpen = false"
+>
+  <app-filters-vehicles
+    [loading]="loadingCars"
+    (confirmFilter)="getReservatonsLoggedUser($event)"
+    (closeDrawer)="openFilters(false)"
+  ></app-filters-vehicles>
+</app-drawer>

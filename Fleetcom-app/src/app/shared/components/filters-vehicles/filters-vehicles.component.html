@@ -1,0 +1,73 @@
+<div class="tools-header">
+  <a (click)="close()">CANCELAR</a>
+  <span>FILTROS</span>
+  <a (click)="reset()">LIMPAR</a>
+</div>
+
+<form [formGroup]="filterForm" class="filter-container">
+  <section class="accordion">
+    <header (click)="toggleAccordion('type')">
+      <h3>Tipos de carrocerias</h3>
+      <span class="arrow" [class.open]="accordionOpen.type"></span>
+    </header>
+
+    <div class="content" *ngIf="accordionOpen.type">
+      <div class="grid">
+        <label *ngFor="let item of vehicleTypes" class="checkbox-item">
+          <input
+            type="checkbox"
+            [checked]="filterForm.value.type.includes(item)"
+            (change)="toggleFilter('type', item)"
+          />
+          <span>{{ item }}</span>
+        </label>
+      </div>
+    </div>
+  </section>
+
+  <section class="accordion">
+    <header (click)="toggleAccordion('engine')">
+      <h3>Tipos de motores</h3>
+      <span class="arrow" [class.open]="accordionOpen.engine"></span>
+    </header>
+
+    <div class="content" *ngIf="accordionOpen.engine">
+      <div class="button-group">
+        <button
+          type="button"
+          *ngFor="let motor of engines"
+          [class.active]="filterForm.value.engine.includes(motor)"
+          (click)="toggleFilter('engine', motor)"
+        >
+          {{ motor }}
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="accordion">
+    <header (click)="toggleAccordion('size')">
+      <h3>Quantidade de lugares</h3>
+      <span class="arrow" [class.open]="accordionOpen.size"></span>
+    </header>
+
+    <div class="content" *ngIf="accordionOpen.size">
+      <div class="button-group small">
+        <button
+          type="button"
+          *ngFor="let seat of seats"
+          [class.active]="filterForm.value.size.includes(seat)"
+          (click)="toggleFilter('size', seat)"
+        >
+          {{ seat }}
+        </button>
+      </div>
+    </div>
+  </section>
+</form>
+
+<div class="box-bt-filtrar">
+  <div>
+    <app-loading-button (clickBt)="filtrar()"> APLICAR FILTRO </app-loading-button>
+  </div>
+</div>

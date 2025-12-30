@@ -1,0 +1,16 @@
+<nav id="drawer" [class.open]="open">
+  <div class="header">
+    <div class="title">
+      @if (titleTemplate) {
+      <ng-container *ngTemplateOutlet="titleTemplate"></ng-container>
+      } @else {
+      <span>
+        {{ title }}
+      </span>
+      }
+    </div>
+  </div>
+  <div class="drawer-main">
+    <ng-content></ng-content>
+  </div>
+</nav>

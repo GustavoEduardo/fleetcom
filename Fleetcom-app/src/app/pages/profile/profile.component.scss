@@ -1,0 +1,178 @@
+@import "colors";
+
+.profile-main {
+  max-height: 100dvh;
+  max-width: 100vw;
+  overflow: hidden;
+}
+
+.avatar-main {
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 17px;
+  background: $color-primary;
+  color: #ffffff;
+
+  .avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 1px solid $color-secondary;
+    cursor: pointer;
+    object-fit: cover !important;
+
+  }
+
+  .new-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    cursor: pointer;
+  }
+}
+
+.edit-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: none;
+  background-color: #00000050;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  cursor: pointer;
+  margin-left: -97px;
+}
+
+.user-info {
+  margin: 0 auto;
+  max-height: 60vh;
+  max-width: 600px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 30px;
+  font-size: 18px;
+  font-weight: 400;
+  display: flex;
+  gap: 18px;
+  flex-direction: column;
+  padding-bottom: 60px;
+
+  .info {
+    color: $color-primary;
+    margin-right: 8px;
+  }
+
+  .info-item {
+    color: $text-secondary;
+    overflow: hidden;
+    word-break: break-word;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  input {
+    border-radius: 32px;
+    border: none;
+    height: 52px;
+    padding: 8px 20px;
+    width: 100%;
+    color: $text-primary;
+    margin: 6px 0 22px 0;
+  }
+
+  .disabled {
+    pointer-events: none;
+  }
+
+  .enable {
+    border: 1px solid #cdcdcd;
+  }
+}
+
+.input-container {
+  position: relative;
+  width: 100%;
+}
+
+.input-container input {
+  padding-right: 50px;
+}
+
+.eye-btn {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.eye-btn mat-icon {
+  font-size: 24px;
+  color: $text-secondary;
+}
+
+.eye-btn:hover mat-icon {
+  color: $color-primary;
+}
+
+.box-bt {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: 100vw;
+  height: 80px;
+  padding: 60px 0;
+
+  * {
+    width: 40%;
+    max-width: 420px;
+  }
+
+  .bt-full {
+    min-width: 320px;
+    max-width: 420px;
+  }
+}
+
+.bt-alterar-senha {
+  color: $link;
+  font-size: 14px;
+  padding: 30px;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.input-error {
+  border: 1px solid #C61D35 !important;
+}
+
+small {
+  color: #C61D35;
+  font-size: 13px;
+}
+

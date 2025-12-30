@@ -1,0 +1,145 @@
+@import "colors";
+
+.capa {
+  position: relative;
+  width: 100%;
+  height: 260px;
+  background-image: url("/assets/images/capa-carro.png");
+  background-size: 190%;
+  background-repeat: no-repeat;
+  background-position: right;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.capa::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: $color-primary;
+  opacity: 0.8;
+  z-index: 0;
+}
+
+.bt-logout {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #ffffff;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.bt-logout mat-icon {
+  font-size: 28px;
+  color: #ffffff;
+}
+
+.content-info {
+  position: relative;
+  z-index: 1;
+
+  .img-capa {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-direction: column;
+  }
+
+  .avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 1px solid $color-secondary;
+    object-fit: cover !important;
+  }
+
+  .new-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+
+    .icon {
+      font-size: 80px;
+      width: 80px;
+      height: 80px;
+      opacity: 0.4;
+    }
+  }
+
+  .user-name {
+    font-size: 18px;
+    max-width: 94vw;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.tools {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50vw;
+  min-width: 320px;
+  margin: 0 auto;
+  margin-bottom: -140px;
+  margin-top: 20px;
+  padding-right: 10px;
+}
+
+.box-last-reservations {
+  padding: 60px 0 30px 28px;
+  color: $color-primary;
+
+  h3 {
+    display: inline-block;
+    font-weight: 700;
+    font-size: 18px;
+  }
+}
+.bt-qr {
+  font-size: 14px;
+  font-weight: 400;
+  width: 82%;
+  text-align: center;
+  margin: 0 auto;
+  max-width: 320px;
+  padding-bottom: 90px;
+
+  img {
+    margin-right: 14px;
+    width: 34px;
+  }
+}
+
+.container-no-reservations {
+  min-height: 130px;
+  padding: 60px 10px;
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  margin: 0 auto;
+  color: $text-secondary;
+
+  .bt-nova-reserva {
+    color: $link;
+    cursor: pointer;
+    border: none;
+  }
+}

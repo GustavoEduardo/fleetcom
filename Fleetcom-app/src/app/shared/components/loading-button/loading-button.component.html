@@ -1,0 +1,8 @@
+<button (click)="clickButton()" [ngClass]="['bg-'+bgType]" [disabled]="loading || disabled" class="loading-button">
+  <ng-container *ngIf="!loading">
+    <ng-content></ng-content>
+  </ng-container>
+  <ng-container *ngIf="loading">
+    <span class="spinner"></span>
+  </ng-container>
+</button>

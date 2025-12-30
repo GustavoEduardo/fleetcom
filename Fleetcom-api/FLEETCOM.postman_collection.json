@@ -1,0 +1,745 @@
+{
+	"info": {
+		"_postman_id": "7717c08e-72f6-44d9-9c2e-b830f9845de7",
+		"name": "FLEETCOM",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16481977"
+	},
+	"item": [
+		{
+			"name": "USER",
+			"item": [
+				{
+					"name": "CREATE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								},
+								{
+									"key": "undefined",
+									"type": "any"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Admin 1\",\n    \"email\": \"testeadmin@teste.com.br\",\n    \"password\": \"mudar123\",\n    \"password_confirm\": \"mudar123\",\n    \"role\": \"admin\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/user",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								},
+								{
+									"key": "undefined",
+									"type": "any"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Teste UP\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/user/6928460da89ca6331931de18",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"user",
+								"6928460da89ca6331931de18"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FIND",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								},
+								{
+									"key": "undefined",
+									"type": "any"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/user",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "INFO",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								},
+								{
+									"key": "undefined",
+									"type": "any"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/user/info",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"user",
+								"info"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FIND BY ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								},
+								{
+									"key": "undefined",
+									"type": "any"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/user/6928460da89ca6331931de18",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"user",
+								"6928460da89ca6331931de18"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								},
+								{
+									"key": "undefined",
+									"type": "any"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/user/69284531a89ca6331931de14",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"user",
+								"69284531a89ca6331931de14"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPLOAD AVATAR",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								},
+								{
+									"key": "undefined",
+									"type": "any"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/home/mastertax/Downloads/logo_menor.svg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/user/6929e3d3dfdfdfbf4d65067f/avatar",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"user",
+								"6929e3d3dfdfdfbf4d65067f",
+								"avatar"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "VEHICLE",
+			"item": [
+				{
+					"name": "CREATE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								},
+								{
+									"key": "undefined",
+									"type": "any"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Toro 2\",\n    \"year\": \"2016\",\n    \"type\": \"Picape média\",\n    \"engine\": \"1.6\",\n    \"size\": \"5\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/vehicle",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"vehicle"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								},
+								{
+									"key": "undefined",
+									"type": "any"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Toro\",\n    \"year\": 2016\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/vehicle/692846dba89ca6331931de20",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"vehicle",
+								"692846dba89ca6331931de20"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FIND",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								},
+								{
+									"key": "undefined",
+									"type": "any"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/vehicle",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"vehicle"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "Picape média",
+									"disabled": true
+								},
+								{
+									"key": "engine",
+									"value": "1.6",
+									"disabled": true
+								},
+								{
+									"key": "status",
+									"value": "AVAILABLE",
+									"disabled": true
+								},
+								{
+									"key": "year",
+									"value": "2016",
+									"disabled": true
+								},
+								{
+									"key": "size",
+									"value": "5",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "tor",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FILTERS",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								},
+								{
+									"key": "undefined",
+									"type": "any"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/vehicle/filters",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"vehicle",
+								"filters"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								},
+								{
+									"key": "undefined",
+									"type": "any"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/vehicle/69286c9a50f66c20fcfde2ed",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"vehicle",
+								"69286c9a50f66c20fcfde2ed"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPLOAD IMAGE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								},
+								{
+									"key": "undefined",
+									"type": "any"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/home/mastertax/Documentos/G/Logo_Happmobi_Tiffany.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/vehicle/692846dba89ca6331931de20/image",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"vehicle",
+								"692846dba89ca6331931de20",
+								"image"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "RESERVATION",
+			"item": [
+				{
+					"name": "CREATE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								},
+								{
+									"key": "undefined",
+									"type": "any"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"vehicleId\": \"69286c9a50f66c20fcfde2ed\",\n    \"reservedFrom\": \"2025-11-27 20:00:00\",\n    \"reservedUntil\": \"2025-11-30 20:00:00\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/reservation",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"reservation"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CANCEL",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								},
+								{
+									"key": "undefined",
+									"type": "any"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Toro\",\n    \"year\": 2016\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/reservation/69284b02c61d38b87d3daa8f/cancel",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"reservation",
+								"69284b02c61d38b87d3daa8f",
+								"cancel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FIND BY USER",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								},
+								{
+									"key": "undefined",
+									"type": "any"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/reservation/by-user",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"reservation",
+								"by-user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "AUTH",
+			"item": [
+				{
+					"name": "LOGIN",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"admin@happmob.com\",\n    \"password\": \"admin123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TEST",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						},
+						{
+							"key": "undefined",
+							"type": "any"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"identificador\": \"desenvolvimento\",\n  \"descricao\": \"Teste Result Real\",\n  \"created_by\": \"987654321\",\n    \"chaves\": [\n    \"31230116794464003172550010000928541282112782\",\n    \"31230216794464003172550010000933091375699355\",\n    \"35230216794464000408550010001824781612663300\",\n    \"41230216794464004225550010000344151346575813\",\n    \"31230216794464003172550010000933211286015480\",\n    \"35230116794464002796550010000364631161378165\",\n    \"29230116794464002958550010000890291023339756\",\n    \"35230316794464003768550010001285041970332148\",\n    \"35230416794464000742550010001445561741695040\",\n    \"41230216794464004497550010000614611012001911\",\n    \"35230303063350000195550010000247081931412218\",\n    \"23230329943878000142550040000075511667445850\",\n    \"41230216794464004497550010000616101784210554\",\n    \"35230316794464000580550010000697461231514560\",\n    \"29230346084219000117550010000002701000700039\",\n    \"35230110394422000142550010018233411694220155\",\n    \"35230216794464000157550010001319511890586485\",\n    \"35230316794464000742550010001432911381830493\",\n    \"35230256215999000817550010008451301613049121\",\n    \"35230216794464001390550010000659251704705900\"\n  ]\n\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": ""
+		},
+		{
+			"key": "access_token",
+			"value": ""
+		}
+	]
+}

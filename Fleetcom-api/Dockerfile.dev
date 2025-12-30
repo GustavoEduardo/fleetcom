@@ -1,0 +1,16 @@
+FROM node:22-alpine
+
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm install
+
+RUN npm install -g @nestjs/cli
+
+# Copia o código do context do yml para workdir
+COPY . .
+
+EXPOSE 3000
+
+# executa comando no up
+CMD ["npm", "run", "start:dev"]

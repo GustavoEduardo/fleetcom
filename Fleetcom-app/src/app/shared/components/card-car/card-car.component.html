@@ -1,0 +1,17 @@
+<div (click)="click(car)" [ngClass]="{ 'card': true, 'card-button': isButton }">
+
+  <div class="img">
+    <img [src]="api + car.imageUrl" class="img-vehicle" alt="vehicle" />
+  </div>
+
+  <div class="info">
+    <h4>{{ car.name }} - {{ car.year }}</h4>
+    <h5>{{ car.type }}</h5>
+    <h5>Motor {{ car.engine }}</h5>
+    <h5>{{ car.size }} Lugares</h5>
+    @if(reservation){
+        <h5>De: {{ reservation.reservedFrom | date: 'd/M/yy' }}</h5>
+        <h5>Até: {{ reservation.reservedUntil | date: 'd/M/yy' }} </h5>
+    }
+  </div>
+</div>

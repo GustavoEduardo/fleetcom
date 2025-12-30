@@ -1,0 +1,54 @@
+<div class="login-container">
+  <img src="assets/images/logo_fundo.svg" class="marca-dagua" alt="Logo" />
+
+  <div class="box-logo">
+    <img src="assets/images/logo_menor.svg" class="logo" alt="logo" />
+    <h1 class="title">Fleetcom</h1>
+  </div>
+
+  <form [formGroup]="formLogin" (ngSubmit)="login()" class="login-form">
+    <div class="form-field">
+      <input placeholder="Usuário" type="email" formControlName="email" />
+    </div>
+
+    <div class="form-field">
+      <input placeholder="Senha" type="password" formControlName="password" />
+    </div>
+
+    <div class="box-error">
+      <small
+        class="error-form"
+        *ngIf="
+          formLogin.controls['email'].invalid &&
+          formLogin.controls['email'].touched
+        "
+      >
+        Email inválido
+      </small>
+
+      <small
+        class="error-form"
+        *ngIf="
+          formLogin.controls['password'].invalid &&
+          formLogin.controls['password'].touched
+        "
+      >
+        Senha inválida
+      </small>
+    </div>
+
+    <app-loading-button
+      bgType="secondary"
+      [loading]="loadingBt"
+      (click)="login()"
+    >
+      Entrar
+    </app-loading-button>
+
+    <div class="msg-info bt-link">Esqueci minha senha</div>
+  </form>
+
+  <p class="msg-cadastrar">
+    Ainda não tem cadastro? <span class="bt-link">Criar conta</span>
+  </p>
+</div>

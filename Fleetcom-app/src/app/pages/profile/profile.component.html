@@ -1,0 +1,218 @@
+<div class="profile-main">
+  <div class="user-avatar">
+    <div class="avatar-main">
+      <div
+        class="user-avatar"
+        (mouseenter)="hover = true"
+        (mouseleave)="hover = false"
+        (click)="selecionarImagemClick()"
+      >
+        @if(user) { @if(user.avatarUrl) {
+        <img [src]="api + user.avatarUrl" class="avatar" />
+        } @else {
+        <div class="new-avatar">
+          <mat-icon>edit</mat-icon>
+        </div>
+        } }
+
+        <div
+          matButton="elevated"
+          matTooltip="Alterar imagem"
+          class="edit-icon"
+          *ngIf="hover"
+        >
+          <mat-icon>edit</mat-icon>
+        </div>
+      </div>
+
+      <input
+        type="file"
+        #fileInput
+        hidden
+        accept="image/*"
+        (change)="uploadAvatar($event)"
+      />
+    </div>
+  </div>
+
+  <div class="user-info">
+    <form [formGroup]="formUser">
+      <div>
+        <span class="info">Nome:</span>
+        <input
+          #inputName
+          [ngClass]="{ 'info-item': true, disabled: disabled, enable: editing }"
+          formControlName="name"
+          placeholder="Nome"
+        />
+      </div>
+
+      <div>
+        <span class="info">Login:</span>
+        <input
+          [ngClass]="{ 'info-item': true, disabled: disabled, enable: editing }"
+          formControlName="email"
+          placeholder="Email"
+        />
+      </div>
+
+      <a
+        (click)="enableEditPass()"
+        class="bt-alterar-senha"
+        *ngIf="editing && !editPass"
+      >
+        Alterar Senha
+      </a>
+
+      <div *ngIf="editPass" class="password-wrapper">
+        <span class="info">Informe a nova Senha:</span>
+
+        <div class="input-container">
+          <input
+            [type]="showPass ? 'text' : 'password'"
+            formControlName="password"
+            [ngClass]="{
+              'info-item': true,
+              disabled: disabled,
+              enable: editing
+            }"
+            placeholder="*******"
+            autocomplete="new-password"
+            [class.input-error]="
+              formUser.get('password')?.invalid &&
+              formUser.get('password')?.touched
+            "
+          />
+          <button type="button" (click)="showPass = !showPass" class="eye-btn">
+            <mat-icon>{{
+              showPass ? "visibility" : "visibility_off"
+            }}</mat-icon>
+          </button>
+        </div>
+
+        <small
+          *ngIf="
+            formUser.get('password')?.hasError('required') &&
+            formUser.get('password')?.touched
+          "
+        >
+          Campo obrigatório.
+        </small>
+        <small
+          *ngIf="
+            formUser.get('password')?.hasError('minlength') &&
+            formUser.get('password')?.touched
+          "
+        >
+          Deve ter no mínimo 6 caracteres.
+        </small>
+      </div>
+
+      <div *ngIf="editPass" class="password-wrapper">
+        <span class="info">Confirme a nova Senha:</span>
+
+        <input style="display: none" type="text" autocomplete="off" />
+
+        <div class="input-container">
+          <input
+            [type]="showConfirmPass ? 'text' : 'password'"
+            [ngClass]="{
+              'info-item': true,
+              disabled: disabled,
+              enable: editing
+            }"
+            formControlName="password_confirm"
+            placeholder="*******"
+            autocomplete="off"
+            autocorrect="off"
+            spellcheck="false"
+          />
+
+          <button
+            type="button"
+            (click)="showConfirmPass = !showConfirmPass"
+            class="eye-btn"
+          >
+            <mat-icon>{{
+              showConfirmPass ? "visibility" : "visibility_off"
+            }}</mat-icon>
+          </button>
+        </div>
+
+        <small
+          *ngIf="
+            formUser.hasError('passwordsNotMatch') &&
+            formUser.get('password_confirm')?.touched
+          "
+        >
+          As senhas não coincidem
+        </small>
+      </div>
+
+      <div *ngIf="editPass" class="password-wrapper">
+        <span class="info">Confirme a Senha atual:</span>
+
+        <input style="display: none" type="text" autocomplete="off" />
+
+        <div class="input-container">
+          <input
+            [type]="showOldPass ? 'text' : 'password'"
+            [ngClass]="{
+              'info-item': true,
+              disabled: disabled,
+              enable: editing
+            }"
+            formControlName="old_password"
+            placeholder="*******"
+            autocomplete="off"
+            autocorrect="off"
+            spellcheck="false"
+          />
+
+          <button
+            type="button"
+            (click)="showOldPass = !showOldPass"
+            class="eye-btn"
+          >
+            <mat-icon>{{
+              showOldPass ? "visibility" : "visibility_off"
+            }}</mat-icon>
+          </button>
+        </div>
+
+        <small
+          *ngIf="
+            formUser.get('old_password')?.hasError('required') &&
+            formUser.get('old_password')?.touched
+          "
+        >
+          Campo obrigatório.
+        </small>
+      </div>
+    </form>
+
+    <div class="box-bt">
+      <app-loading-button
+        [bgType]="'secondary'"
+        *ngIf="editing"
+        (clickBt)="cancelEdit()"
+      >
+        CANCELAR
+      </app-loading-button>
+      <app-loading-button
+        matButton="elevated"
+        [matTooltip]="
+          formUser.invalid
+            ? 'Todos os campos devem ser preenchidos corretamante'
+            : ''
+        "
+        [disabled]="formUser.invalid"
+        [ngClass]="{ 'bt-full': disabled }"
+        [loading]="loading"
+        (clickBt)="disabled ? enableWEdit(true) : save()"
+      >
+        {{ disabled ? "EDITAR INFORMAÇÔES" : "SALVAR" }}
+      </app-loading-button>
+    </div>
+  </div>
+</div>

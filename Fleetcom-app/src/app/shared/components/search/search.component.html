@@ -1,0 +1,18 @@
+<div class="search-wrapper" role="search" aria-label="Buscar carro">
+  <label class="sr-only" for="search-car">Buscar carro</label>
+
+  <div class="search-input">
+    <img src="assets/icons/busca.svg" alt="" aria-hidden="true" class="search-icon" />
+    <input
+      id="search-car"
+      type="search"
+      placeholder="Buscar carro"
+      class="search-field"
+      autocomplete="off"
+      aria-label="Buscar carro"
+      [(ngModel)]="searchQuery"
+      (keyup)="emitSearch()"
+      (search)="emitSearch()"
+    />
+  </div>
+</div>

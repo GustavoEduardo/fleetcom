@@ -1,0 +1,7 @@
+<button class="btn-icon" (click)="emitClick()" type="button">
+  <span class="icon">
+    <ng-content select="[icon]"></ng-content>
+  </span>
+
+  <span class="label" *ngIf="text">{{ text }}</span>
+</button>
