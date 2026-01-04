@@ -16,7 +16,7 @@ export class VehiclesService {
     return this.http.get<Vehicle[]>(`${this.API_URL}?${queryString}`);
   }
 
-  getFilters(): Observable<VehicleFiltersResponse[]> {
-    return this.http.get<VehicleFiltersResponse[]>(`${this.API_URL}/filters`);
+  getFilters(): Observable<VehicleFiltersResponse> {
+    return this.http.get<VehicleFiltersResponse>(`${this.API_URL}/filters`);
   }
 }

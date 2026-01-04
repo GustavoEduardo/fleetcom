@@ -11,9 +11,9 @@ async function main() {
      USUÁRIO ADMIN
   ============================== */
 
-  const adminEmail = process.env.SEED_USER_EMAIL || 'admin@admin.com';
-  const adminPassword = process.env.SEED_USER_PASSWORD || 'admin123';
-  const adminName = process.env.SEED_USER_NAME || 'Admin';
+  const adminEmail = process.env.SEED_USER_EMAIL || '';
+  const adminPassword = process.env.SEED_USER_PASSWORD || '';
+  const adminName = process.env.SEED_USER_NAME || '';
 
   const adminExists = await prisma.user.findUnique({
     where: { email: adminEmail },

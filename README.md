@@ -37,6 +37,12 @@ Ou, se preferir rodar em segundo plano:
 docker compose -f docker-compose.dev.yml up -d
 ```
 
+##### Para criar o usuários de teste e os primeiros dados rode (após subir a docker DEV):
+
+``` bash
+docker compose -f docker-compose.dev.yml exec fleetcom-api npx prisma db seed
+```
+
 #### (Ambiente de Produção Unificado)
 
 Build:
@@ -55,12 +61,6 @@ Ou, se preferir rodar em segundo plano:
 
 ``` bash
 docker compose up -d
-```
-
-##### Para criar o usuários de teste e os primeiros dados rode (após subir a docker):
-
-``` bash
-docker exec -it fleetcom-api npx prisma db seed
 ```
 
 Após subir os serviços:

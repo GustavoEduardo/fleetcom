@@ -55,7 +55,7 @@ export class VehicleService {
 
     if (vehicle.imageUrl) {
       const filePath = path.join(
-        __dirname,
+        process.cwd(),
         '..',
         '..',
         'public',

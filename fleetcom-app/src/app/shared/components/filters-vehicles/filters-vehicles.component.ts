@@ -14,7 +14,6 @@ import {
 import { CommonModule } from '@angular/common';
 import { LoadingButtonComponent } from '../loading-button/loading-button.component';
 import { VehiclesService } from '../../../services/vehicles.service';
-import { buildQueryParams } from '../../../utils/query-string.util';
 import { SnackService } from '../../../services/snack-bar.service';
 
 @Component({
@@ -78,9 +77,9 @@ export class FiltersVehiclesComponent {
   getVehiclesFilters() {
     this.vehiclesService.getFilters().subscribe({
       next: (res) => {
-        this.engines = res[0].engines.map((e: any) => e.value);
-        this.seats = res[0].sizes.map((s: any) => s.value);
-        this.vehicleTypes = res[0].types.map((t: any) => t.value);
+        this.engines = res.engines.map((e: any) => e.value);
+        this.seats = res.sizes.map((s: any) => s.value);
+        this.vehicleTypes = res.types.map((t: any) => t.value);
       },
       error: (err) => {
         this.snackService.error(

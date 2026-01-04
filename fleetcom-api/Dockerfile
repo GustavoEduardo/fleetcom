@@ -19,6 +19,7 @@ FROM node:22-alpine
 WORKDIR /app
 
 COPY package*.json ./
+# Sem dependências de desenvolvimento (ts-node por ex.)
 RUN npm install --omit=dev
 
 COPY --from=build /app/dist ./dist
@@ -35,4 +36,4 @@ COPY --from=build /app/public ./public
 EXPOSE 3000
 
 # Aplica migrations e inicia API
-CMD ["sh", "-c", "npx prisma migrate deploy && node dist/main.js"]
+CMD ["sh", "-c", "npx prisma migrate deploy && node dist/src/main.js"]

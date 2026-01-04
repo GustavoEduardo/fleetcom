@@ -4,8 +4,8 @@ services:
     container_name: fleetcom-postgres
     restart: always
     environment:
-      POSTGRES_USER: ${PRISMA_PASS}
-      POSTGRES_PASSWORD: ${PRISMA_USER}
+      POSTGRES_USER: ${PRISMA_USER}
+      POSTGRES_PASSWORD: ${PRISMA_PASS}
       POSTGRES_DB: ${PRISMA_DB_NAME}
     volumes:
       - postgres_data:/var/lib/postgresql/data

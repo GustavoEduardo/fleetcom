@@ -4,9 +4,9 @@ services:
     container_name: fleetcom-postgres
     restart: always
     environment:
-      POSTGRES_USER: api
-      POSTGRES_PASSWORD: mudar123
-      POSTGRES_DB: fleetcom
+      POSTGRES_USER: ${PRISMA_USER}
+      POSTGRES_PASSWORD: ${PRISMA_PASS}
+      POSTGRES_DB: ${PRISMA_DB_NAME}
     ports:
       - "5432:5432"
     volumes:

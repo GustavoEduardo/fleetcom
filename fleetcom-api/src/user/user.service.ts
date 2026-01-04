@@ -178,7 +178,7 @@ export class UserService {
     // remover avatar
     if (user.avatarUrl) {
       const filePath = path.join(
-        __dirname,
+        process.cwd(),
         '..',
         '..',
         'public',
