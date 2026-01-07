@@ -77,9 +77,9 @@ export class FiltersVehiclesComponent {
   getVehiclesFilters() {
     this.vehiclesService.getFilters().subscribe({
       next: (res) => {
-        this.engines = res.engines.map((e: any) => e.value);
-        this.seats = res.sizes.map((s: any) => s.value);
-        this.vehicleTypes = res.types.map((t: any) => t.value);
+        this.engines = res.data.engines.map((e: any) => e.value);
+        this.seats = res.data.sizes.map((s: any) => s.value);
+        this.vehicleTypes = res.data.types.map((t: any) => t.value);
       },
       error: (err) => {
         this.snackService.error(

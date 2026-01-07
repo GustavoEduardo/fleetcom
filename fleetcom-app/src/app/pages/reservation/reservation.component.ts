@@ -94,7 +94,7 @@ export class ReservationComponent {
   }
 
   ngOnInit() {
-    this.reservationForm.statusChanges.subscribe((status) => {
+    this.reservationForm.statusChanges.subscribe((status: string) => {
       if (status === 'VALID') {
         setTimeout(() => {
           document.getElementById('btReservar')?.scrollIntoView({
@@ -127,7 +127,7 @@ export class ReservationComponent {
 
     this.reservationService.getReservatonsLoggedUser(queryString).subscribe({
       next: (res) => {
-        this.reservations = res;
+        this.reservations = res.data;
 
         this.noReservations = this.reservations.length === 0;
 
@@ -167,7 +167,7 @@ export class ReservationComponent {
 
     this.vehiclesService.getVehicles(queryString).subscribe({
       next: (res) => {
-        this.vehicles = res;
+        this.vehicles = res.data;
         this.loadingCars = false;
 
         this.openFilters(false);

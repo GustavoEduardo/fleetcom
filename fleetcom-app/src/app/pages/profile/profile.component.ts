@@ -86,10 +86,9 @@ export class ProfileComponent {
   getLoggedUserInfo() {
     this.userService.getLoggedUserInfo().subscribe({
       next: (res) => {
-        console.log(res)
-        this.user = res;
-        this.formUser.get('name')?.setValue(res.name);
-        this.formUser.get('email')?.setValue(res.email);
+        this.user = res.data;
+        this.formUser.get('name')?.setValue(this.user.name);
+        this.formUser.get('email')?.setValue(this.user.email);
         this.loading = false;
       },
       error: (err) => {
@@ -141,12 +140,17 @@ export class ProfileComponent {
             res.message || 'Edição realizada com sucesso'
           );
 
+          this.user = res.data || this.user;
+
           this.disabled = true;
           this.editing = false;
           this.enableEditPass(false);
         },
         error: (err) => {
           this.loading = false;
+
+          console.log(err.error.message)
+
 
           this.snackService.error(
             err.error.message || 'Erro inesperado ao tentar salvar as informações'

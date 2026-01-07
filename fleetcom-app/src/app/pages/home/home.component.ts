@@ -69,7 +69,7 @@ export class HomeComponent {
   getLoggedUserInfo() {
     this.userService.getLoggedUserInfo().subscribe({
       next: (res) => {
-        this.user = res;
+        this.user = res.data;
 
         this.getReservatonsLoggedUser();
       },
@@ -100,7 +100,7 @@ export class HomeComponent {
 
     this.reservationService.getReservatonsLoggedUser(queryString).subscribe({
       next: (res) => {
-        this.reservations = res;
+        this.reservations = res.data;
 
         this.noReservations = this.reservations.length === 0;
         this.loadingCars = false;

@@ -13,6 +13,7 @@ import * as path from 'path';
 import { PrismaService } from '../prisma/prisma.service';
 import { ConfigService } from '@nestjs/config';
 import { VehicleStatus } from '@prisma/client';
+import { removeNullValues } from 'src/common/utils/remove-null-values';
 
 @Injectable()
 export class UserService {
@@ -82,8 +83,6 @@ export class UserService {
       select: this.selecDefault,
     });
 
-    console.log(user)
-
     if (!user) throw new NotFoundException('Nenhum usuário encontrado');
     return user;
   }
@@ -137,14 +136,13 @@ export class UserService {
       data.password = await bcrypt.hash(data.password, salt);
     }
 
+    // console.log(data)
+
+    const toUpdate = removeNullValues(data);
+
     return this.prisma.user.update({
       where: { id },
-      data: {
-        name: data.name,
-        email: data.email,
-        avatarUrl: data.avatarUrl,
-        password: data.password,
-      },
+      data: toUpdate,
       select: this.selecDefault,
     });
   }

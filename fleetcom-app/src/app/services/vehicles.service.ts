@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../environments/environment';
 import { Observable } from 'rxjs';
 import { Vehicle, VehicleFiltersResponse } from '../model/vehicle.model';
+import { ApiResponse } from '../model/api-rersponse.model';
 
 @Injectable({
   providedIn: 'root',
@@ -12,11 +13,11 @@ export class VehiclesService {
 
   constructor(private http: HttpClient) {}
 
-  getVehicles(queryString: string): Observable<Vehicle[]> {
-    return this.http.get<Vehicle[]>(`${this.API_URL}?${queryString}`);
+  getVehicles(queryString: string): Observable<ApiResponse<Vehicle[]>> {
+    return this.http.get<ApiResponse<Vehicle[]>>(`${this.API_URL}?${queryString}`);
   }
 
-  getFilters(): Observable<VehicleFiltersResponse> {
-    return this.http.get<VehicleFiltersResponse>(`${this.API_URL}/filters`);
+  getFilters(): Observable<ApiResponse<VehicleFiltersResponse>> {
+    return this.http.get<ApiResponse<VehicleFiltersResponse>>(`${this.API_URL}/filters`);
   }
 }

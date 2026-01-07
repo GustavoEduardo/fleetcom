@@ -81,7 +81,7 @@ export class UserController {
   @ApiBody({ type: EditUserDto })
   @ApiOkResponseWrapped(ResUserDto)
   @Roles('ADMIN')
-  update(@Param('id') id: string, @Body() data: ResUserDto) {
+  update(@Param('id') id: string, @Body() data: EditUserDto) {
     return this.userService.update(id, data);
   }
 
